@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ba8ni3loseaky"]
+
+[ext_resource type="Texture2D" uid="uid://bp5jixhpv4hj0" path="res://icon.svg" id="1_acqhf"]
+[ext_resource type="Script" uid="uid://btrdkrx2jo6jd" path="res://Scripts/npc.gd" id="1_xxsvc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 6.0
+height = 120.0
+
+[node name="NPC" type="CharacterBody2D" unique_id=592718260]
+script = ExtResource("1_xxsvc")
+
+[node name="NPCSprite" type="Sprite2D" parent="." unique_id=259750176]
+texture = ExtResource("1_acqhf")
+
+[node name="NPCCollision" type="CollisionShape2D" parent="." unique_id=739473427]
+position = Vector2(0, 56)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=910652446]

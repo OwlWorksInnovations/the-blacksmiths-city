@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ScheduleEntry" format=3 uid="uid://c0cgudfin3238"]
+
+[ext_resource type="Script" uid="uid://dpnl1spj2t7wq" path="res://Scripts/ScheduleEntry.gd" id="1_shy4a"]
+
+[resource]
+script = ExtResource("1_shy4a")
+metadata/_custom_type_script = "uid://dpnl1spj2t7wq"
