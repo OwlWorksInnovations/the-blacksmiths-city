@@ -1,29 +1,27 @@
 extends  CharacterBody2D
 
-var speed: float = 150
+var speed: float = 300
 var target: Vector2 = Vector2.ZERO
 var current_time: float = 0
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @export var schedule: NPCSchedule
-@export var work_location: Marker2D
-@export var tavern_location: Marker2D
-@export var sleep_location: Marker2D
 
-func set_time(time):
+func set_time(time: float) -> void:
 	current_time = time
 	
-	if current_time >= schedule.work_start_hour and current_time < schedule.tavern_start_hour and current_time < schedule.sleep_start_hour:
-		target = work_location.global_position
-	elif current_time >= schedule.tavern_start_hour and current_time < schedule.sleep_start_hour:
-		target = tavern_location.global_position
-	elif current_time >= schedule.sleep_start_hour or current_time < schedule.work_start_hour:
-		target = sleep_location.global_position
+	var active_entry: ScheduleEntry = null
 	
-	navigation_agent_2d.path_desired_distance = 4.0
-	navigation_agent_2d.target_desired_distance = 4.0
-	actor_setup.call_deferred()
-
+	for entry in schedule.entries:
+		if entry.start_hour <= current_time:
+			active_entry = entry
+	
+	if active_entry:
+		var nodes = get_tree().get_nodes_in_group(active_entry.location_group)
+		if nodes.size() > 0:
+			target = nodes[0].global_position
+			set_movement_target(target)
+	
 func _ready() -> void:
 	TimeManager.connect("hour_changed", set_time)
 

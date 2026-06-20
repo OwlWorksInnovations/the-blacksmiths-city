@@ -2,14 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://msnavov5m5fh" path="res://Scenes/player.tscn" id="1_vlf40"]
 [ext_resource type="PackedScene" uid="uid://ba8ni3loseaky" path="res://Scenes/npc.tscn" id="2_cogjd"]
-[ext_resource type="Script" uid="uid://dkl12kclqfm4e" path="res://Scripts/NPCSchedule.gd" id="3_uvqy6"]
+[ext_resource type="Resource" uid="uid://djbahy1wi1ibn" path="res://AI/devSChe.tres" id="3_uvqy6"]
 [ext_resource type="PackedScene" uid="uid://cwfvxag0oayya" path="res://Scenes/time.tscn" id="3_wxhvf"]
-
-[sub_resource type="Resource" id="Resource_uvqy6"]
-script = ExtResource("3_uvqy6")
-start_hour = null
-location_group = null
-metadata/_custom_type_script = "uid://dkl12kclqfm4e"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g4v7s"]
 vertices = PackedVector2Array(794.5078, 31.992188, 1074.1172, 57.0625, 1056.0078, 255.46875, 856.15625, 298.42188, 830.3281, 194.0625, 291.70313, 478.1172, 260.5, 533.7031, 232.82813, 573.8594, 90.09375, 570.2422, 94.90625, 56.226563, 309.7422, 414.46875, 367.40625, 392.20313, 432.3828, 29, 392.34375, 299.92188, 1051.1328, 574.1094, 723.1406, 613.78125, 817.6328, 472.09375, 565.8828, 222.0625, 674.97656, 179.95313, 772.14844, 177.21875, 799.64844, 292.53906, 728.96094, 339.67188, 507.6797, 322.2422, 692.8906, 389.28125, 493.95313, 436.0078, 486.5703, 529.14844, 715.46094, 456.9922, 842.78125, 402.35938, 793.8125, 135.42188, 616.2969, 121.84375, 503.8203, 170.34375, 428.10156, 230.50781, 385.28125, 349.3203)
@@ -21,23 +15,20 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(85, 47, 80, 580, 238, 5
 [node name="Player" parent="." unique_id=193019390 instance=ExtResource("1_vlf40")]
 position = Vector2(238, 199)
 
-[node name="NPC" parent="." unique_id=592718260 node_paths=PackedStringArray("work_location", "tavern_location", "sleep_location") instance=ExtResource("2_cogjd")]
+[node name="NPC" parent="." unique_id=592718260 instance=ExtResource("2_cogjd")]
 position = Vector2(723, 234)
-schedule = SubResource("Resource_uvqy6")
-work_location = NodePath("../WorkLocation")
-tavern_location = NodePath("../TavernLocation")
-sleep_location = NodePath("../SleepLocation")
+schedule = ExtResource("3_uvqy6")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1057027110]
 navigation_polygon = SubResource("NavigationPolygon_g4v7s")
 
-[node name="WorkLocation" type="Marker2D" parent="." unique_id=1866075060]
+[node name="WorkLocation" type="Marker2D" parent="." unique_id=1866075060 groups=["Work"]]
 position = Vector2(315, 127)
 
-[node name="SleepLocation" type="Marker2D" parent="." unique_id=386372454]
+[node name="SleepLocation" type="Marker2D" parent="." unique_id=386372454 groups=["Sleep"]]
 position = Vector2(698, 240)
 
-[node name="TavernLocation" type="Marker2D" parent="." unique_id=599831582]
+[node name="TavernLocation" type="Marker2D" parent="." unique_id=599831582 groups=["Tavern"]]
 position = Vector2(169, 542)
 
 [node name="Time" parent="." unique_id=155967952 instance=ExtResource("3_wxhvf")]
