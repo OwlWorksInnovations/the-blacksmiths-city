@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bigra6b7bu4ue"]
+
+[ext_resource type="Script" uid="uid://bn0rladc7ma4" path="res://Scripts/schedule.gd" id="1_5gssh"]
+
+[node name="Schedule" type="PanelContainer" unique_id=1769126318]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5gssh")

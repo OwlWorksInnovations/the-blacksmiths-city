@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://divdydsnd81fy"]
 
+[ext_resource type="Script" uid="uid://dj30dmxgl1nvq" path="res://Scripts/development.gd" id="1_8ad72"]
 [ext_resource type="PackedScene" uid="uid://msnavov5m5fh" path="res://Scenes/player.tscn" id="1_vlf40"]
 [ext_resource type="PackedScene" uid="uid://ba8ni3loseaky" path="res://Scenes/npc.tscn" id="2_cogjd"]
-[ext_resource type="Resource" uid="uid://djbahy1wi1ibn" path="res://AI/devSChe.tres" id="3_uvqy6"]
 [ext_resource type="PackedScene" uid="uid://cwfvxag0oayya" path="res://Scenes/time.tscn" id="3_wxhvf"]
+[ext_resource type="PackedScene" uid="uid://bk5apga1daxla" path="res://Scenes/modify_schedule.tscn" id="5_65qye"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_g4v7s"]
 vertices = PackedVector2Array(794.5078, 31.992188, 1074.1172, 57.0625, 1056.0078, 255.46875, 856.15625, 298.42188, 830.3281, 194.0625, 291.70313, 478.1172, 260.5, 533.7031, 232.82813, 573.8594, 90.09375, 570.2422, 94.90625, 56.226563, 309.7422, 414.46875, 367.40625, 392.20313, 432.3828, 29, 392.34375, 299.92188, 1051.1328, 574.1094, 723.1406, 613.78125, 817.6328, 472.09375, 565.8828, 222.0625, 674.97656, 179.95313, 772.14844, 177.21875, 799.64844, 292.53906, 728.96094, 339.67188, 507.6797, 322.2422, 692.8906, 389.28125, 493.95313, 436.0078, 486.5703, 529.14844, 715.46094, 456.9922, 842.78125, 402.35938, 793.8125, 135.42188, 616.2969, 121.84375, 503.8203, 170.34375, 428.10156, 230.50781, 385.28125, 349.3203)
@@ -11,13 +12,22 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(85, 47, 80, 580, 238, 584, 269, 539, 301, 482, 318, 422, 375, 400, 395, 352, 402, 303, 436, 237, 509, 179, 618, 132, 788, 145, 821, 198, 846, 299, 833, 400, 811, 461, 723, 448, 704, 391, 736, 347, 811, 297, 780, 167, 673, 170, 559, 214, 498, 319, 484, 435, 476, 536, 722, 624, 1061, 583, 1066, 256, 1085, 48, 795, 22, 432, 19)])
 
 [node name="DevelopmentScene" type="Node2D" unique_id=1097445607]
+script = ExtResource("1_8ad72")
+
+[node name="ModifySchedule" parent="." unique_id=1583055821 instance=ExtResource("5_65qye")]
+visible = false
+z_index = -1
+offset_right = 1150.0
+offset_bottom = 651.0
 
 [node name="Player" parent="." unique_id=193019390 instance=ExtResource("1_vlf40")]
 position = Vector2(238, 199)
 
-[node name="NPC" parent="." unique_id=592718260 instance=ExtResource("2_cogjd")]
+[node name="DevelopmentNPC" parent="." unique_id=592718260 groups=["NPC"] instance=ExtResource("2_cogjd")]
 position = Vector2(723, 234)
-schedule = ExtResource("3_uvqy6")
+
+[node name="DrunkNPC" parent="." unique_id=624058898 groups=["NPC"] instance=ExtResource("2_cogjd")]
+position = Vector2(174, 487)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1057027110]
 navigation_polygon = SubResource("NavigationPolygon_g4v7s")

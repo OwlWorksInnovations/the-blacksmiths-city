@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ScheduleEntry" format=3 uid="uid://b6sy0kdywqnht"]
+
+[ext_resource type="Script" uid="uid://dpnl1spj2t7wq" path="res://Scripts/ScheduleEntry.gd" id="1_50pfk"]
+
+[resource]
+script = ExtResource("1_50pfk")
+start_hour = 20.0
+location_group = "Sleep"
+metadata/_custom_type_script = "uid://dpnl1spj2t7wq"

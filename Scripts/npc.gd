@@ -10,12 +10,19 @@ var current_time: float = 0
 func set_time(time: float) -> void:
 	current_time = time
 	
+	if schedule == null or schedule.entries.is_empty():
+		return
+
 	var active_entry: ScheduleEntry = null
-	
+	var closest_start_hour: float = -1.0 # Track the highest valid hour found so far
+
 	for entry in schedule.entries:
-		if entry.start_hour <= current_time:
+		# Check if the entry has already started, and if it's a closer match than the previous find
+		if entry.start_hour <= current_time and entry.start_hour > closest_start_hour:
 			active_entry = entry
-	
+			closest_start_hour = entry.start_hour
+
+	# Move to target location if an active entry was found
 	if active_entry:
 		var nodes = get_tree().get_nodes_in_group(active_entry.location_group)
 		if nodes.size() > 0:

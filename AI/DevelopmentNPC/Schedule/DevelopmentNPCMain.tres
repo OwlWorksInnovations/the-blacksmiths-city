@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NPCSchedule" format=3 uid="uid://b4rvt6cnoskmj"]
+
+[ext_resource type="Script" uid="uid://dpnl1spj2t7wq" path="res://Scripts/ScheduleEntry.gd" id="1_0ng88"]
+[ext_resource type="Resource" uid="uid://38scxnokvjp0" path="res://AI/DevelopmentNPC/Entries/DevelopmentNPCWork.tres" id="2_4egt1"]
+[ext_resource type="Resource" uid="uid://b6sy0kdywqnht" path="res://AI/DevelopmentNPC/Entries/DevelopmentNPCSleep.tres" id="3_d3qdq"]
+[ext_resource type="Resource" uid="uid://dahvy5bo6pq31" path="res://AI/DevelopmentNPC/Entries/DevelopmentNPCTavern.tres" id="4_qqakg"]
+[ext_resource type="Script" uid="uid://dkl12kclqfm4e" path="res://Scripts/NPCSchedule.gd" id="5_0wc1t"]
+
+[resource]
+script = ExtResource("5_0wc1t")
+entries = Array[ExtResource("1_0ng88")]([ExtResource("2_4egt1"), ExtResource("3_d3qdq"), ExtResource("4_qqakg")])
+metadata/_custom_type_script = "uid://dkl12kclqfm4e"
